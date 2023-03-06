@@ -2,7 +2,7 @@
 
 import sys
 import threading
-import numpy as np
+import numpy
 
 
 def compute_height(n, parents):
@@ -16,19 +16,14 @@ def main():
     # implement input form keyboard and from files
     inputmethod = input()
     if "I" in inputmethod:
-        nodecount = inputmethod.split(sep=' ',maxsplit=1)[1]
+        nodecount = int(input())
         nodestring = input()
     elif "F" in inputmethod:
-        #file = input()
-        #nodecount = file[0]
-        #nodestring = file.split(sep=' ',maxsplit=1)[1]
-
         filename = input()
-        read = open('test/'+filename + '.txt', 'r')
-        nodecount = read.readline(0)
-        nodestring = read.readline(1)
-        read.close()
-    array = np.fromstring(nodestring,sep=' ')
+        with open('test/'+filename, 'r') as read:
+            nodecount = read.readline()
+            nodestring = read.readline()
+    array = numpy.fromstring(nodestring,sep=' ')
     array = array.astype(int)
     if -1 in array:
         root = -1
