@@ -15,10 +15,10 @@ def compute_height(n, parents):
 def main():
     # implement input form keyboard and from files
     inputmethod = input()
-    if inputmethod == "I":
-        nodecount = input()
+    if "I" in inputmethod:
+        nodecount = inputmethod.split(sep=' ',maxsplit=1)[1]
         nodestring = input()
-    elif inputmethod == "F":
+    elif "F" in inputmethod:
         #file = input()
         #nodecount = file[0]
         #nodestring = file.split(sep=' ',maxsplit=1)[1]
@@ -28,7 +28,6 @@ def main():
         nodecount = read.readline(0)
         nodestring = read.readline(1)
         read.close()
-    print(nodecount,nodestring)
     array = np.fromstring(nodestring,sep=' ')
     array = array.astype(int)
     if -1 in array:
